@@ -1,0 +1,207 @@
+@mixin bandeau-style($position){
+  color:white;
+  background: black;
+  text-align: $position;
+  padding-top:5px;
+  padding-bottom:5px;
+  font-size: 3.3em;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+  @if $position == left {
+    padding-left:2%;
+      padding-right:6%;
+  }
+  @else {
+    padding-right:2%;
+      padding-left:6%;
+  }
+}
+
+@mixin bandeau($position){
+  @include bandeau-style($position);
+  z-index:4;
+  position: absolute;
+  width:50%;
+
+  @if $position == left {
+    transform: rotate(3deg);
+    margin-right: -150px;
+    margin-bottom: -55px;
+    right:0;
+  }
+  @else {
+    transform: rotate(-3deg);
+    margin-left: -150px;
+    margin-bottom: -5px;
+    left:0;
+
+  }
+}
+
+div {
+  // background:rgba(1,0,0,0.3);
+  // border:simple 1px red;
+}
+
+
+body {
+  font-size:16px;
+  margin:0;
+  padding:0;
+  font-family: arial;
+   overflow-x: hidden;
+  background:url(https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1406085/1166/777/m1/fpnw/wm1/scr-.jpg?1467112164&s=0d03742f8a1064601af8b39f6d2e1670);
+}
+
+a, a:hover {
+  text-decoration: none;
+  color:black;
+}
+
+
+#header {
+  width:100%;
+  text-align: right;
+
+  h1, h2 {
+
+    margin-right: -3%;
+  }
+
+  h1 {
+    @include bandeau-style(left);
+    font-size: 4.3em;
+  }
+
+  h2 {
+    @include bandeau-style(left);
+    font-size: 2.3em;
+    padding-left:5%;
+  }
+
+}
+
+h3 {
+
+  span {
+    opacity: 0;
+  }
+
+}
+
+
+  .sns {
+
+    position:fixed;
+    left:0;
+    top:30%;
+
+
+      a, a:hover {
+          @include bandeau-style(left);
+          display:block;
+          margin:10% 0;
+          padding:0 25px;
+      }
+  }
+
+
+section#intro {
+
+  .content {
+    background:white;
+  }
+
+  img {
+    width:100%;
+  }
+
+  .description {
+    font-size: 1.2em;
+  }
+
+  .text > span {
+    padding:2%;
+    display:block;
+    text-align: justify;
+  }
+
+  .capacities {
+
+    column-count: 2;
+    font-size: 1.3em;
+
+    span {
+      width:55%;
+      display: inline-block;
+    }
+  }
+
+}
+
+.project {
+
+  margin-bottom:20%;
+
+&.right {
+  h3 {
+    @include bandeau(right)
+  }
+}
+
+&.left {
+  h3 {
+    @include bandeau(left)
+  }
+}
+}
+.category {
+  margin:auto;
+  background:white;
+  padding:6% 4% 4%;
+  color:black;
+  position:relative;
+
+  img {
+    width:100%;
+    opacity: 0;
+  }
+
+  span.text {
+    text-align: justify;
+    display: block;
+    opacity:0;
+    font-size: 1.2em;
+  }
+
+  .thumbnails {
+    a {
+      margin:1% 0 4%;
+    }
+    img {
+    max-width: 100%;
+    height: auto;
+  }
+
+}
+}
+
+a.button {
+  color:white;
+  background: black;
+  padding:10px;
+  width:auto;
+  text-align:center;
+
+}
+
+footer {
+  width:100%;
+  background: white;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 3px;
+}
