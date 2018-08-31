@@ -1,3 +1,13 @@
+*::selection {
+  color: white;
+  background: black;
+  /* WebKit/Blink Browsers */ }
+
+*::-moz-selection {
+  color: white;
+  background: black;
+  /* Gecko Browsers */ }
+
 body {
   font-size: 16px;
   margin: 0;
@@ -7,14 +17,12 @@ body {
   background: url(https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1406085/1166/777/m1/fpnw/wm1/scr-.jpg?1467112164&s=0d03742f8a1064601af8b39f6d2e1670); }
 
 a, a:hover {
-  text-decoration: none;
-  color: black; }
+  text-decoration: none; }
 
 #header {
   width: 100%;
-  text-align: right; }
-  #header h1, #header h2 {
-    margin-right: -3%; }
+  text-align: right;
+  margin-left: 50px; }
   #header h1 {
     color: white;
     background: black;
@@ -28,6 +36,17 @@ a, a:hover {
     padding-left: 2%;
     padding-right: 6%;
     font-size: 4.3em; }
+    #header h1::selection {
+      color: black;
+      background: white;
+      /* WebKit/Blink Browsers */ }
+    #header h1::-moz-selection {
+      color: black;
+      background: white;
+      /* Gecko Browsers */ }
+    @media (max-width: 575.98px) {
+      #header h1 {
+        font-size: 3em; } }
   #header h2 {
     color: white;
     background: black;
@@ -42,6 +61,21 @@ a, a:hover {
     padding-right: 6%;
     font-size: 2.3em;
     padding-left: 5%; }
+    #header h2::selection {
+      color: black;
+      background: white;
+      /* WebKit/Blink Browsers */ }
+    #header h2::-moz-selection {
+      color: black;
+      background: white;
+      /* Gecko Browsers */ }
+  #header h1, #header h2 {
+    width: 103%; }
+    @media (max-width: 991.98px) {
+      #header h1, #header h2 {
+        width: 100%;
+        text-align: center;
+        padding: 0; } }
 
 h3 span {
   opacity: 0; }
@@ -49,7 +83,13 @@ h3 span {
 .sns {
   position: fixed;
   left: 0;
-  top: 30%; }
+  bottom: 30%;
+  z-index: 5; }
+  @media (max-width: 991.98px) {
+    .sns {
+      bottom: 0;
+      text-align: center;
+      width: 100%; } }
   .sns a, .sns a:hover {
     color: white;
     background: black;
@@ -65,26 +105,50 @@ h3 span {
     display: block;
     margin: 10% 0;
     padding: 0 25px; }
+    .sns a::selection, .sns a:hover::selection {
+      color: black;
+      background: white;
+      /* WebKit/Blink Browsers */ }
+    .sns a::-moz-selection, .sns a:hover::-moz-selection {
+      color: black;
+      background: white;
+      /* Gecko Browsers */ }
+    @media (max-width: 991.98px) {
+      .sns a, .sns a:hover {
+        text-align: center;
+        width: 30%;
+        margin: 0;
+        display: inline-block;
+        font-size: 1.3em; } }
 
-section#intro .content {
-  background: white; }
-section#intro img {
-  width: 100%; }
-section#intro .description {
-  font-size: 1.2em; }
-section#intro .text > span {
-  padding: 2%;
-  display: block;
-  text-align: justify; }
-section#intro .capacities {
-  column-count: 2;
-  font-size: 1.3em; }
-  section#intro .capacities span {
-    width: 55%;
-    display: inline-block; }
+section#intro {
+  margin-bottom: 15%; }
+  section#intro .content {
+    background: white; }
+  section#intro img#logo {
+    width: 100%;
+    opacity: 0; }
+  section#intro .description {
+    font-size: 1.2em; }
+  section#intro .text > span {
+    padding: 2% 5%;
+    display: block;
+    text-align: justify; }
+  section#intro .capacities {
+    font-size: 1.3em;
+    display: flex; }
+    @media (max-width: 1400px) {
+      section#intro .capacities {
+        display: block; } }
+    section#intro .capacities > div {
+      flex: 50%; }
+    section#intro .capacities span {
+      width: 55%;
+      min-width: 100px;
+      display: inline-block; }
 
 .project {
-  margin-bottom: 20%; }
+  margin-bottom: 15%; }
   .project.right h3 {
     color: white;
     background: black;
@@ -104,6 +168,20 @@ section#intro .capacities {
     margin-left: -150px;
     margin-bottom: -5px;
     left: 0; }
+    .project.right h3::selection {
+      color: black;
+      background: white;
+      /* WebKit/Blink Browsers */ }
+    .project.right h3::-moz-selection {
+      color: black;
+      background: white;
+      /* Gecko Browsers */ }
+    @media (max-width: 991.98px) {
+      .project.right h3 {
+        width: 90%; } }
+    @media (max-width: 991.98px) {
+      .project.right h3 {
+        transform: rotate(0deg); } }
   .project.left h3 {
     color: white;
     background: black;
@@ -123,6 +201,27 @@ section#intro .capacities {
     margin-right: -150px;
     margin-bottom: -55px;
     right: 0; }
+    .project.left h3::selection {
+      color: black;
+      background: white;
+      /* WebKit/Blink Browsers */ }
+    .project.left h3::-moz-selection {
+      color: black;
+      background: white;
+      /* Gecko Browsers */ }
+    @media (max-width: 991.98px) {
+      .project.left h3 {
+        width: 90%; } }
+    @media (max-width: 991.98px) {
+      .project.left h3 {
+        transform: rotate(0deg); } }
+  @media (max-width: 1400px) {
+    .project.right h3, .project.left h3 {
+      font-size: 2.6em;
+      width: 70%; } }
+  @media (max-width: 991.98px) {
+    .project.right h3, .project.left h3 {
+      font-size: 2em; } }
 
 .category {
   margin: auto;
@@ -133,23 +232,43 @@ section#intro .capacities {
   .category img {
     width: 100%;
     opacity: 0; }
+  @media (max-width: 991.98px) {
+    .category .row > .col-md-8 {
+      padding: 10px 30px; } }
   .category span.text {
     text-align: justify;
     display: block;
     opacity: 0;
     font-size: 1.2em; }
+    .category span.text a {
+      text-transform: uppercase;
+      background: black;
+      padding: 2px 5px;
+      color: white; }
   .category .thumbnails a {
-    margin: 1% 0 4%; }
+    margin: 1% 0 4%;
+    transition: 0.5s all; }
+    .category .thumbnails a:hover {
+      opacity: 0.6; }
   .category .thumbnails img {
     max-width: 100%;
-    height: auto; }
+    height: 100%;
+    object-fit: cover; }
 
 a.button {
   color: white;
   background: black;
   padding: 10px;
-  width: auto;
-  text-align: center; }
+  width: 50%;
+  margin: 3% auto;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.3em;
+  font-family: "Oswald",sans-serif;
+  display: block; }
+  @media (max-width: 991.98px) {
+    a.button {
+      width: auto; } }
 
 footer {
   width: 100%;

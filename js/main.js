@@ -1,10 +1,12 @@
-// lightGallery(document.getElementById('lightgallery'));
-//
-//
 
+// init lightgallery
+$("div").filter(function(){
+  return this.id.match(/lightgallery[0-9]/);
+}).each(function(){
 
-      lightGallery(document.getElementById('lightgallery'));
-            lightGallery(document.getElementById('lightgallery1'));
+  lightGallery(this);
+})
+
 
 var w = window.innerWidth;
 var h = window.innerHeight;
@@ -12,9 +14,13 @@ var h = window.innerHeight;
 $(document).ready(function(){
 
 
+  $("#intro img").animate({opacity:1}, 800,function() {})
+  $("#header").animate({marginLeft:0}, 800,function() {})
+
+
   function gallerySetUp() {
 
-     $(".thumbnails").each(function(){
+    $(".thumbnails").each(function(){
       $images = $(this).find("a img");
       $imgMargin = parseFloat($images.first().css("marginLeft"));
 
@@ -27,7 +33,7 @@ $(document).ready(function(){
         $(this).css("width",$imgW)
       })
 
-      })
+    })
   }
 
 
@@ -41,7 +47,7 @@ $(document).ready(function(){
       $marginTop = "-25px";
     }
     else {
-      $marginRight = "-10px";
+      $marginRight = "-20px";
       $marginLeft = "-40px";
       $marginTop = "-55px";
     }
@@ -63,33 +69,25 @@ $(document).ready(function(){
     });
   }
 
+
+
+
+ // init waypoint
   $offset = 500;
 
-  var waypoint = new Waypoint({
-    element: document.getElementById('waypoint'),
-    handler: function() {
+  $wp =   $('div')
+  .filter(function() {
+    return this.id.match(/waypoint[0-9]/);
+  }).each(function(){
+    new Waypoint({
+      element: this,
+      handler: function() {
 
-      categoryAnimation(this.element.id, this.element.className)
-    },
-    offset: $offset
+        categoryAnimation(this.element.id, this.element.className)
+      },
+      offset: $offset
+    })
   })
-
-  var waypoint = new Waypoint({
-    element: document.getElementById('waypoint1'),
-    handler: function() {
-      categoryAnimation(this.element.id, this.element.className)
-    },
-    offset: $offset
-  })
-
-  var waypoint = new Waypoint({
-    element: document.getElementById('waypoint2'),
-    handler: function() {
-      categoryAnimation(this.element.id, this.element.className)
-    },
-    offset: $offset
-  })
-
 
 
 

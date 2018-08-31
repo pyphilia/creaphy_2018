@@ -1,3 +1,28 @@
+$phone-width: 575.98px;
+$tablet-width: 991.98px;
+$desktop-width: 1400px;
+
+
+@mixin phone {
+      @media (max-width: $phone-width) {
+        @content;
+      }
+}
+
+@mixin tablet {
+  @media (max-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: $desktop-width) {
+    @content;
+  }
+}
+
+
+
 @mixin bandeau-style($position){
   color:white;
   background: black;
@@ -5,18 +30,30 @@
   padding-top:5px;
   padding-bottom:5px;
   font-size: 3.3em;
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+
 
   @if $position == left {
     padding-left:2%;
-      padding-right:6%;
+    padding-right:6%;
   }
   @else {
     padding-right:2%;
-      padding-left:6%;
+    padding-left:6%;
   }
+
+
+  &::selection {
+    color:black;
+    background: white; /* WebKit/Blink Browsers */
+  }
+  &::-moz-selection {
+    color:black;
+    background: white; /* Gecko Browsers */
+  }
+
 }
 
 @mixin bandeau($position){
@@ -25,54 +62,71 @@
   position: absolute;
   width:50%;
 
+  @include tablet {
+    width:90%;
+  }
+
   @if $position == left {
+
     transform: rotate(3deg);
     margin-right: -150px;
     margin-bottom: -55px;
     right:0;
+
+
+      @include tablet {
+      transform: rotate(0deg);
+      }
+
   }
   @else {
     transform: rotate(-3deg);
     margin-left: -150px;
     margin-bottom: -5px;
     left:0;
+      @include tablet {
+      transform: rotate(0deg);
+      }
 
   }
 }
 
-div {
-  // background:rgba(1,0,0,0.3);
-  // border:simple 1px red;
+*::selection {
+  color:white;
+  background: black; /* WebKit/Blink Browsers */
 }
-
+*::-moz-selection {
+  color:white;
+  background: black; /* Gecko Browsers */
+}
 
 body {
   font-size:16px;
   margin:0;
   padding:0;
   font-family: arial;
-   overflow-x: hidden;
+  overflow-x: hidden;
   background:url(https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1406085/1166/777/m1/fpnw/wm1/scr-.jpg?1467112164&s=0d03742f8a1064601af8b39f6d2e1670);
 }
 
 a, a:hover {
   text-decoration: none;
-  color:black;
 }
 
 
 #header {
   width:100%;
   text-align: right;
-
-  h1, h2 {
-
-    margin-right: -3%;
-  }
+  margin-left:50px;
 
   h1 {
     @include bandeau-style(left);
     font-size: 4.3em;
+
+    @include phone {
+        font-size: 3em;
+     }
+
   }
 
   h2 {
@@ -81,41 +135,69 @@ a, a:hover {
     padding-left:5%;
   }
 
+    h1, h2 {
+
+      width:103%;
+
+      @include tablet {
+        width:100%;
+              text-align: center;
+              padding:0;
+      }
+    }
+
 }
 
 h3 {
 
+
   span {
     opacity: 0;
   }
+}
 
+.sns {
+
+  position:fixed;
+  left:0;
+  bottom:30%;
+  z-index: 5;
+
+  @include tablet {
+    bottom:0;
+    text-align: center;
+    width: 100%;
+  }
+
+  a, a:hover {
+    @include bandeau-style(left);
+    display:block;
+    margin:10% 0;
+    padding:0 25px;
+
+
+    @include tablet {
+    text-align: center;
+      width:30%;
+      margin:0;
+      display: inline-block;
+      font-size: 1.3em;
+    }
+  }
 }
 
 
-  .sns {
-
-    position:fixed;
-    left:0;
-    top:30%;
-
-
-      a, a:hover {
-          @include bandeau-style(left);
-          display:block;
-          margin:10% 0;
-          padding:0 25px;
-      }
-  }
-
-
 section#intro {
+
+  margin-bottom: 15%;
 
   .content {
     background:white;
   }
 
-  img {
+  img#logo {
     width:100%;
+    opacity: 0;
   }
 
   .description {
@@ -123,40 +205,71 @@ section#intro {
   }
 
   .text > span {
-    padding:2%;
+    padding:2% 5%;
     display:block;
     text-align: justify;
   }
 
   .capacities {
 
-    column-count: 2;
     font-size: 1.3em;
+    display: flex;
+            // Large devices (desktops, less than 1200px)
+            @include desktop {
+    display:block;
+            }
+
+    & > div {
+    flex: 50%;
+
+    }
+
 
     span {
       width:55%;
+      min-width: 100px;
       display: inline-block;
     }
   }
 
 }
 
+
+
 .project {
 
-  margin-bottom:20%;
+  margin-bottom:15%;
 
-&.right {
-  h3 {
-    @include bandeau(right)
+  &.right {
+    h3 {
+      @include bandeau(right)
+    }
+  }
+
+  &.left {
+    h3 {
+      @include bandeau(left)
+    }
+  }
+
+  &.right h3, &.left h3 {
+
+    // Large devices (desktops, less than 1200px)
+    @include desktop {
+          font-size: 2.6em;
+          width:70%;
+
+    }
+    // Medium devices (tablets, less than 992px)
+    @include tablet {
+            font-size: 2em;
+     }
   }
 }
 
-&.left {
-  h3 {
-    @include bandeau(left)
-  }
-}
-}
+
+
+
 .category {
   margin:auto;
   background:white;
@@ -169,32 +282,60 @@ section#intro {
     opacity: 0;
   }
 
+    .row > .col-md-8 {
+@include tablet {
+    padding:10px 30px;
+  }
+  }
+
   span.text {
     text-align: justify;
     display: block;
     opacity:0;
     font-size: 1.2em;
+
+    a {
+      text-transform: uppercase;
+      background:black;
+      padding:2px 5px;
+      color:white;
+    }
   }
 
   .thumbnails {
     a {
       margin:1% 0 4%;
+      transition: 0.5s all;
+
+      &:hover {
+        opacity:0.6;
+      }
     }
     img {
-    max-width: 100%;
-    height: auto;
-  }
+      max-width: 100%;
+      height:100%;
+      object-fit:cover;
+    }
 
-}
+  }
 }
 
 a.button {
   color:white;
   background: black;
   padding:10px;
-  width:auto;
+  width:50%;
+  margin: 3% auto;
   text-align:center;
+  text-transform: uppercase;
+  font-size: 1.3em;
+  font-family: "Oswald",sans-serif;
+  display: block;
 
+  @include tablet {
+
+    width:auto;
+  }
 }
 
 footer {
