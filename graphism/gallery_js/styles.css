@@ -1,0 +1,90 @@
+
+/*****GRAPHISM*****/
+
+
+body {/*
+	background-color:rgba(0,0,0,0.2); */
+	font-size: 16px;
+	background-image:url(../../img/background.png);
+	overflow: hidden;
+
+}
+
+html, body,  .container {
+	height: 100%;
+}
+
+#graphism {
+
+	display:flex;
+	flex-direction: row;
+	align-items: flex-end;
+	height:100%;
+}
+
+#creation_content {
+	box-sizing:border-box;
+	display:flex-box;
+	padding:1%;
+	margin:0;
+	background: white;
+	height:100%;
+	width:80%;
+
+}
+
+
+.sublinks {
+	width:20%;
+	text-align: right;
+	margin-bottom: 10%;
+}
+
+
+.sublinks span{
+
+	display:block;
+	margin:0.5% 3%;
+	float:right;
+	width:50%;
+	font-size: 0.8em;
+	background:white;
+	padding:6px 15px;
+	text-transform:uppercase;
+}
+
+.sublinks span:hover {
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+
+
+#gallery {
+	height:100%;
+}
+#gallery img {
+	height: 150px;
+	width:150px;
+	object-fit: cover;
+	margin:0.5%;
+	background: $hoverColor;
+}
+
+#gallery img:hover {
+	opacity:0.7;
+}
+
+
+#gallery .list {
+	margin:10px 0;
+	overflow:auto;
+	height:85%;
+
+}
+
+
+
+.chosen-container {
+	width:80% !important;
+}

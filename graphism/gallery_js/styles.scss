@@ -1,0 +1,93 @@
+
+/*****GRAPHISM*****/
+
+#graphism {
+
+	display:flex;
+	flex-direction: row;
+	align-items: flex-end;
+	height:100%;
+}
+#sidebar {
+	display:flex-box;
+	box-sizing:border-box;
+	margin:0 0 50px 0;
+	padding:0 2%;
+}
+#sidebar h1 {
+	font-size:3em;
+}
+
+#sidebar nav {
+
+	text-align: left;
+}
+#sidebar ul li {
+	list-style:none;
+	display: block;
+
+}
+
+
+
+
+#creation_content {
+	box-sizing:border-box;
+	display:flex-box;
+	padding:1%;
+	margin:0;
+	background: white;
+	height:100%;
+
+}
+
+
+
+
+
+.sublinks span{
+
+	display:inline-block;
+	vertical-align: middle;
+	margin:0.5%;
+	font-size: 0.8em;
+	background:white;
+	padding:10px 20px;
+	text-transform:uppercase;
+}
+
+.sublinks span:hover {
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+
+
+#gallery {
+	height:100%;
+}
+#gallery img {
+	height: 150px;
+	width:150px;
+	object-fit: cover;
+	margin:0.5%;
+	background: $hoverColor;
+}
+
+#gallery img:hover {
+	opacity:0.7;
+}
+
+
+#gallery .list {
+	margin:10px 0;
+	overflow:auto;
+	height:85%;
+
+}
+
+
+
+.chosen-container {
+	width:80% !important;
+}

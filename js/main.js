@@ -73,7 +73,7 @@ $(document).ready(function(){
 
 
  // init waypoint
-  $offset = 500;
+  $offset = 600;
 
   $wp =   $('div')
   .filter(function() {
@@ -82,7 +82,6 @@ $(document).ready(function(){
     new Waypoint({
       element: this,
       handler: function() {
-
         categoryAnimation(this.element.id, this.element.className)
       },
       offset: $offset
